@@ -5,8 +5,7 @@
 ################################################################################
 
 RETROARCH_VERSION = v1.9.7
-RETROARCH_SITE = git://github.com/libretro/RetroArch.git
-RETROARCH_SITE_METHOD = git
+RETROARCH_SITE = $(call github,libretro,retroarch,$(RETROARCH_VERSION))
 RETROARCH_LICENSE = GPLv3+
 RETROARCH_CONF_OPTS += --disable-oss --enable-zlib
 RETROARCH_DEPENDENCIES = host-pkgconf libretro-core-info
