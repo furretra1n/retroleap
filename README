@@ -11,10 +11,11 @@ Installing:
 
 On ubuntu/debian/etc: sudo apt install sg3-utils git python
 
-2. Clone sshflash:
+2. Clone sshflash (the git checkout command is required for flashing Retroleap 2.0.0 Alpha 4 and below)
 
 git clone https://github.com/mac2612/sshflash.git
 cd sshflash
+git checkout 9db71e4
 
 3. Download the latest release .tar.gz file at:
 
