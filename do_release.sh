@@ -1,5 +1,5 @@
-# TODO: Do something when one of these steps fails instead of just moving on.
-
+# exit when any command fails
+set -e
 
 # lf1000_didj surgeon
 make clean
