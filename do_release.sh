@@ -52,5 +52,5 @@ make clean
 make lf3000_defconfig
 make
 cp output/images/rootfs.tar.gz release/lf3000_rootfs.tar.gz
-cp output/images/uImage release/lf3000_uImage.tar.gz
+cp output/images/uImage release/lf3000_uImage
 
