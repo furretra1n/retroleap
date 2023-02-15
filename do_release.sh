@@ -40,6 +40,11 @@ make
 cp output/images/uImage release/lf2000_uImage
 cp output/images/rootfs.tar.gz release/lf2000_rootfs.tar.gz
 
+# RT defconfig is kernel only
+make lf2000_rt_defconfig
+make
+cp output/images/uImage release/lf2000_rt_uImage
+
 
 # lf3000 surgeon
 make clean
