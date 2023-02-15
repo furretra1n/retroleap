@@ -32,6 +32,8 @@ make clean
 make lf2000_surgeon_defconfig
 make
 cp output/images/zImage release/lf2000_surgeon_zImage
+# To avoid making sshflash targeting more complicated...even though it's exactly the same.
+cp output/images/zImage release/lf2000_rt_surgeon_zImage
 
 # lf2000 main
 make clean
