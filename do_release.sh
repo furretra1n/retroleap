@@ -46,7 +46,7 @@ cp output/images/rootfs.tar.gz release/lf2000_rootfs.tar.gz
 make lf2000_rt_defconfig
 make
 cp output/images/uImage release/lf2000_rt_uImage
-
+cp output/images/rootfs.tar.gz release/lf2000_rt_rootfs.tar.gz
 
 # lf3000 surgeon
 make clean
