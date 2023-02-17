@@ -365,6 +365,7 @@ menu "Libretro Cores"
        source "package/libretro-glupen64/Config.in"
        source "package/libretro-snes9x/Config.in"
        source "package/libretro-atari800/Config.in"
+       source "package/libretro-mpv/Config.in"
 endmenu
 endif
 endmenu
