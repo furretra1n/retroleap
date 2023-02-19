@@ -7,7 +7,7 @@
 RETROARCH_VERSION = v1.9.7
 RETROARCH_SITE = $(call github,libretro,retroarch,$(RETROARCH_VERSION))
 RETROARCH_LICENSE = GPLv3+
-RETROARCH_CONF_OPTS += --disable-oss --enable-zlib
+RETROARCH_CONF_OPTS += --disable-oss --enable-zlib --disable-ffmpeg
 RETROARCH_DEPENDENCIES = host-pkgconf libretro-core-info
 
 # SDL2 on retroarch will cause retroleap to bootloop
