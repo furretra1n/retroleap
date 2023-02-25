@@ -1,0 +1,8 @@
+config BR2_PACKAGE_SNES9X4D
+        bool "snes9x4d"
+	depends on BR2_INSTALL_LIBSTDCPP
+        help
+          SNES9x for Dingux emulator - ported to LF1000
+
+comment "Snes9x4D needs a toolchain w/ C++"
+	depends on !BR2_INSTALL_LIBSTDCPP
