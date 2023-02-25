@@ -20,6 +20,9 @@ if [[ $? == 0 ]]; then
     CONFIG=/configs/retroarch.cfg.leappadultra
 fi
 
+# Set minimum free memory (mainly for Didj - fixes crashes in gpsp)
+echo 1596 > /proc/sys/vm/min_free_kbytes
+
 # If gmenunx is present, run it instead of retroarch.
 # TODO: Fix this to be more graceful across different devices etc.
 if [[ -f "/usr/share/gmenunx/gmenunx" && ! -f "/flags/boot_to_retroarch" ]];
@@ -29,6 +32,8 @@ then
           # Volume control slider for Didj
 	  /usr/share/gmenunx/./gmenunx
 	  echo "Restarting gmenunx...."
+	  # Clear file caches to maximise free memory (mainly for Didj)
+	  echo 3 > /proc/sys/vm/drop_caches
 	done
 else
 
