@@ -1,0 +1,41 @@
+--- a/Makefile.old	2022-05-14 12:29:42.000000000 +0100
++++ b/Makefile	2023-02-24 16:35:15.736396000 +0000
+@@ -9,12 +9,10 @@
+ 
+ include Makefile.common
+ 
+-PREFIX  = arm-linux
+-
+-CXX	= $(PREFIX)-g++
+-CC	= $(PREFIX)-gcc
+-STRIP	= $(PREFIX)-strip
+-AS	= $(PREFIX)-as
++CC  := $(CROSS_COMPILE)gcc
++CXX := $(CROSS_COMPILE)g++
++STRIP := $(CROSS_COMPILE)strip
++AS	= $(CROSS_COMPILE)as
+ 
+ SYSROOT := $(shell $(CC) --print-sysroot)
+ SDL_CFLAGS := $(shell $(SYSROOT)/usr/bin/sdl-config --cflags)
+@@ -52,10 +50,10 @@
+ 	-DVIDEO_MODE=1 \
+ 	-DZLIB \
+ 
+-CXXFLAGS = --std=gnu++14 $(CCFLAGS) \
++CXXFLAGS = $(CCFLAGS) \
+ 	-fno-exceptions -fno-rtti -fno-threadsafe-statics
+ 
+-CFLAGS = --std=gnu11 $(CCFLAGS)
++CFLAGS = $(CCFLAGS)
+ 
+ .SUFFIXES: .o .cpp .c .cc .h .m .i .S .asm .obj
+ .PHONY: format
+@@ -67,7 +65,7 @@
+ 
+ snes9x4d: $(OBJECTS)
+ 	$(CXX) -o $@ $(OBJECTS) $(LDFLAGS)
+-	$(STRIP) $@
++	#$(STRIP) $@
+ 
+ .cpp.o:
+ 	$(CXX) -c $(CXXFLAGS) $*.cpp -o $@

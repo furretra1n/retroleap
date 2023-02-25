@@ -1,0 +1,17 @@
+--- ./src/sdlmenu/miyoo_old.h	2022-05-14 12:29:42.000000000 +0100
++++ ./src/sdlmenu/miyoo.h	2023-02-24 17:47:09.590803000 +0000
+@@ -2,14 +2,5 @@
+ #define __MIYOO_h_
+ 
+ #include "dingoo.h"
+-#undef BUTTON_A
+-#undef BUTTON_B
+-#undef BUTTON_X
+-#undef BUTTON_Y
+-#define BUTTON_A SDLK_LALT
+-#define BUTTON_B SDLK_LCTRL
+-#define BUTTON_X SDLK_LSHIFT
+-#define BUTTON_Y SDLK_SPACE
+-#define BUTTON_QUIT SDLK_RCTRL
+ 
+ #endif // __MIYOO_h_
