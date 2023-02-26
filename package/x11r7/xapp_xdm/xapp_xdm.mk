@@ -4,8 +4,8 @@
 #
 ################################################################################
 
-XAPP_XDM_VERSION = 1.1.11
-XAPP_XDM_SOURCE = xdm-$(XAPP_XDM_VERSION).tar.bz2
+XAPP_XDM_VERSION = 1.1.13
+XAPP_XDM_SOURCE = xdm-$(XAPP_XDM_VERSION).tar.xz
 XAPP_XDM_SITE = http://xorg.freedesktop.org/releases/individual/app
 XAPP_XDM_LICENSE = MIT
 XAPP_XDM_LICENSE_FILES = COPYING
@@ -20,6 +20,7 @@ XAPP_XDM_DEPENDENCIES = \
 	xlib_libXt \
 	xorgproto
 XAPP_XDM_CONF_OPTS = \
+	--with-appdefaultdir=/usr/share/X11/app-defaults \
 	--with-utmp-file=/var/adm/utmpx \
 	--with-wtmp-file=/var/adm/wtmpx
 

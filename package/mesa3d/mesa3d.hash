@@ -1,7 +1,5 @@
-# From https://lists.freedesktop.org/archives/mesa-announce/2018-October/000468.html
-md5 3ad402144c2da93f09910dd2e0fc4017  mesa-18.2.3.tar.xz
-sha1 84c037e8ac53c210e3d74ae010241f781251b72c  mesa-18.2.3.tar.xz
-sha256 e2bf83c17e1abdecb1ee81af22652e27e9aa38f963e95e60f34275cc0376304f  mesa-18.2.3.tar.xz
-sha512 20f512b1f3835b1c78b1f05f2e2125dc3437b61b8857e7ec62e0f9ac3be2ccb5b7ebe7e18f444da1117bc100d75e4b03cd2a0180f0f0b1cf760714b43bc7a664  mesa-18.2.3.tar.xz
+# From https://lists.freedesktop.org/archives/mesa-announce/2022-October/000689.html
+sha256  2de11fb74fc5cc671b818e49fe203cea0cd1d8b69756e97cdb06a2f4e78948f9  mesa-22.2.2.tar.xz
+sha512  a1eb67e1ae4880c79b1fdc570f4389baba0b8ba796da7e695c9af19a7d92b6c06b95570e6c796548b61355989025fb7efbf9acac74cbd695f7e297dc913b933c  mesa-22.2.2.tar.xz
 # License
-sha256 630e75b4fdeb75ee2bf9e55db54dd1e3ff7353d52d9314ca8512bfd460f8e24c  docs/license.html
+sha256  a00275a53178e2645fb65be99a785c110513446a5071ff2c698ed260ad917d75  docs/license.rst

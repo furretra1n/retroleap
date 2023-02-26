@@ -1,6 +1,10 @@
 #!/bin/sh
 case "$1" in
   start)
+    if [[ -f /flags/no_menu ]]; then
+      echo "No menu flag present...skipping menuing."
+      exit
+    fi
     /usr/bin/respawn_menu.sh &
     ;;
   stop)
