@@ -20,12 +20,27 @@ if [[ $? == 0 ]]; then
     CONFIG=/configs/retroarch.cfg.leappadultra
 fi
 
+
+
+export HOME=/configs
+
+if [[ ! -f "/configs/.config/retroarch/retroarch.cfg" ]];
+then
+	mkdir -p /configs/.config/retroarch
+	cp $CONFIG /configs/.config/retroarch/retroarch.cfg
+fi
+
+
 # If gmenunx is present, run it instead of retroarch.
 # TODO: Fix this to be more graceful across different devices etc.
 if [[ -f "/usr/share/gmenunx/gmenunx" && ! -f "/flags/boot_to_retroarch" ]];
 then
 	while `true`
 	do
+	  # TODO: Actual lf2000 detection before running these commands
+	  echo 1 > /sys/devices/platform/lf2000-fb.0/graphics/fb1/blank
+	  echo 1 > /sys/devices/platform/lf2000-fb.0/graphics/fb2/blank
+	  echo 0 > /sys/devices/platform/lf2000-fb.0/graphics/fb0/blank
           # Volume control slider for Didj
 	  /usr/share/gmenunx/./gmenunx
 	  echo "Restarting gmenunx...."

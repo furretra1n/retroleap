@@ -1,5 +1,5 @@
-# TODO: Do something when one of these steps fails instead of just moving on.
-
+# exit when any command fails
+set -e
 
 # lf1000_didj surgeon
 make clean
@@ -32,6 +32,8 @@ make clean
 make lf2000_surgeon_defconfig
 make
 cp output/images/zImage release/lf2000_surgeon_zImage
+# To avoid making sshflash targeting more complicated...even though it's exactly the same.
+cp output/images/zImage release/lf2000_rt_surgeon_zImage
 
 # lf2000 main
 make clean
@@ -40,6 +42,11 @@ make
 cp output/images/uImage release/lf2000_uImage
 cp output/images/rootfs.tar.gz release/lf2000_rootfs.tar.gz
 
+# RT defconfig is kernel only
+make lf2000_rt_defconfig
+make
+cp output/images/uImage release/lf2000_rt_uImage
+cp output/images/rootfs.tar.gz release/lf2000_rt_rootfs.tar.gz
 
 # lf3000 surgeon
 make clean
@@ -52,5 +59,5 @@ make clean
 make lf3000_defconfig
 make
 cp output/images/rootfs.tar.gz release/lf3000_rootfs.tar.gz
-cp output/images/uImage release/lf3000_uImage.tar.gz
+cp output/images/uImage release/lf3000_uImage
 

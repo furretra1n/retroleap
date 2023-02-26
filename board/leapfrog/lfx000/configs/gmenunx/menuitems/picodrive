@@ -1,9 +1,0 @@
-title=PicoDrive
-description=SMS/SMD Emulator
-icon=skin:icons/picodrive.png
-exec=/usr/bin/PicoDrive
-volume=1
-wrapper=true
-selectorbrowser=true
-selectordir=/roms/
-selectorfilter=.zip,.md
