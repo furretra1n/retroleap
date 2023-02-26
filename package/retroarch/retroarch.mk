@@ -7,13 +7,15 @@
 RETROARCH_VERSION = v1.9.7
 RETROARCH_SITE = $(call github,libretro,retroarch,$(RETROARCH_VERSION))
 RETROARCH_LICENSE = GPLv3+
-RETROARCH_CONF_OPTS += --disable-oss --enable-zlib
+RETROARCH_CONF_OPTS += --disable-oss --enable-zlib --disable-ffmpeg
 RETROARCH_DEPENDENCIES = host-pkgconf libretro-core-info
 
-ifeq ($(BR2_PACKAGE_SDL2),y)
-	RETROARCH_CONF_OPTS += --enable-sdl2
-	RETROARCH_DEPENDENCIES += sdl2
-else
+# SDL2 on retroarch will cause retroleap to bootloop
+# For now, use SDL1 only regardless of the presence of SDL2
+#ifeq ($(BR2_PACKAGE_SDL2),y)
+#	RETROARCH_CONF_OPTS += --enable-sdl2
+#	RETROARCH_DEPENDENCIES += sdl2
+#else
 	RETROARCH_CONF_OPTS += --disable-sdl2
 	ifeq ($(BR2_PACKAGE_SDL),y)
 		RETROARCH_CONF_OPTS += --enable-sdl
@@ -21,7 +23,7 @@ else
 	else
 		RETROARCH_CONF_OPTS += --disable-sdl
 	endif
-endif
+#endif
 
 # RPI 0 and 1
 ifeq ($(BR2_arm1176jzf_s),y)
