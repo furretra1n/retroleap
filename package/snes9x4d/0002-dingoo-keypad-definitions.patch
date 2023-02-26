@@ -1,0 +1,25 @@
+--- a/src/sdlmenu/dingoo_old.h	2022-05-14 12:29:42.000000000 +0100
++++ b/src/sdlmenu/dingoo.h	2023-02-25 00:46:28.846797000 +0000
+@@ -5,13 +5,14 @@
+ #define BUTTON_DOWN SDLK_DOWN
+ #define BUTTON_RIGHT SDLK_RIGHT
+ #define BUTTON_LEFT SDLK_LEFT
+-#define BUTTON_R SDLK_BACKSPACE
+-#define BUTTON_L SDLK_TAB
+-#define BUTTON_A SDLK_LCTRL
+-#define BUTTON_B SDLK_LALT
+-#define BUTTON_X SDLK_SPACE
+-#define BUTTON_Y SDLK_LSHIFT
+-#define BUTTON_SELECT SDLK_ESCAPE
+-#define BUTTON_START SDLK_RETURN
++#define BUTTON_R SDLK_r
++#define BUTTON_L SDLK_l
++#define BUTTON_A SDLK_a
++#define BUTTON_B SDLK_b
++#define BUTTON_X SDLK_h
++#define BUTTON_Y SDLK_p
++#define BUTTON_SELECT SDLK_d
++#define BUTTON_START SDLK_u
++#define BUTTON_QUIT SDLK_x
+ 
+ #endif // __DINGOO_h_
