@@ -20,7 +20,8 @@ if [[ $? == 0 ]]; then
     CONFIG=/configs/retroarch.cfg.leappadultra
 fi
 
-
+# Set minimum free memory (mainly for Didj - fixes crashes in gpsp)
+echo 1596 > /proc/sys/vm/min_free_kbytes
 
 export HOME=/configs
 
@@ -29,7 +30,6 @@ then
 	mkdir -p /configs/.config/retroarch
 	cp $CONFIG /configs/.config/retroarch/retroarch.cfg
 fi
-
 
 # If gmenunx is present, run it instead of retroarch.
 # TODO: Fix this to be more graceful across different devices etc.
@@ -44,6 +44,8 @@ then
 	  echo 0 > /sys/devices/platform/lf2000-fb.0/graphics/fb0/blank
 	  /usr/share/gmenunx/./gmenunx
 	  echo "Restarting gmenunx...."
+	  # Clear file caches to maximise free memory (mainly for Didj)
+	  echo 3 > /proc/sys/vm/drop_caches
 	done
 else
 
