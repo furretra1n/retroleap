@@ -25,7 +25,8 @@ apps = [
   App("games", "OhBoy", "Gameboy Emulator",  f"{bin_path}ohboy", ".zip,.gb,.gbc", 'ohboy.png', "true"),
   App("games", "PicoDrive", "MegaDrive/Genesis Emulator (standalone)", f"{bin_path}PicoDrive", ".md,.zip", "picodrive.png", "true"),
   App("games", "PocketSNES", "SNES Emulator (standalone)", f"{bin_path}PocketSNES", ".smc,.zip", "pocketsnes.png", "true"),
-  App("games", "Retroarch", "Retroarch (main menu)", f"{bin_path}retroarch", "", "generic.png", "false")
+  App("games", "Retroarch", "Retroarch (main menu)", f"{bin_path}retroarch", "", "generic.png", "false"),
+  App("games", "snes9x4d", "SNES emulator (standalone)", f"{bin_path}snes9x4d", ".smc,.zip", "pocketsnes.png", "true")
 ]
 
 buildroot_root = sys.argv[1]
