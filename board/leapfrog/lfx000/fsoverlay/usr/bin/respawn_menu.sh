@@ -37,11 +37,11 @@ if [[ -f "/usr/share/gmenunx/gmenunx" && ! -f "/flags/boot_to_retroarch" ]];
 then
 	while `true`
 	do
+	  # Blank framebuffers in correct order to stop Leapfrog Logo persisting during screen saver
 	  # TODO: Actual lf2000 detection before running these commands
 	  echo 1 > /sys/devices/platform/lf2000-fb.0/graphics/fb1/blank
 	  echo 1 > /sys/devices/platform/lf2000-fb.0/graphics/fb2/blank
 	  echo 0 > /sys/devices/platform/lf2000-fb.0/graphics/fb0/blank
-          # Volume control slider for Didj
 	  /usr/share/gmenunx/./gmenunx
 	  echo "Restarting gmenunx...."
 	done
