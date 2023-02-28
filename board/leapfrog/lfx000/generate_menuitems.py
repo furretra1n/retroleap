@@ -43,7 +43,6 @@ icon=skin:icons/{a.icon}
 exec={a.path}
 volume=1
 wrapper=true
-selectorbrowser=true
 selectordir=/roms/
 selectorfilter={a.extensions}
 selectorbrowser={a.selectorbrowser}
