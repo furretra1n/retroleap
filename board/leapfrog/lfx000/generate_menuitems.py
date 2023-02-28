@@ -12,11 +12,11 @@ bin_path = "/usr/bin/"
 
 apps = [
   # Libretro cores. gmenunx will detect these and run retroarch appropriately.
-  App("emulators", "Atari800", "Atari 800 Emulator", f"{core_path}atari800_libretro.so", ".zip", "gbc.png", "true"), #TODO: Add extensions
+  App("emulators", "Atari800", "Atari 800 Emulator", f"{core_path}atari800_libretro.so", ".atr,.atx,.pro,.dcm,.xfd,.rom,.bin,.car,.zip", "gbc.png", "true"),
   App("emulators", "CATSFC", "SNES Emulator", f"{core_path}catsfc_libretro.so", ".smc,.zip", 'pocketsnes.png', "true"),
   App("emulators", "FCEUmm", "NES Emulator", f"{core_path}fceumm_libretro.so", ".nes,.zip", "fceux.png", "true"),
   App("emulators", "gpsp", "GBA Emulator", f"{core_path}gpsp_libretro.so", ".gba,.zip", "gbc.png", "true"),
-  App("emulators", "imame", "MAME Emulator", f"{core_path}imame4all_libretro.so", ".zip", "mame4all.png", "true"), #TODO: Add extensions
+  App("emulators", "imame", "MAME Emulator", f"{core_path}imame4all_libretro.so", ".zip", "mame4all.png", "true"),
   App("emulators", "PicoDrive", "MegaDrive/Genesis Emulator", f"{core_path}picodrive_libretro.so", ".md,.zip", "picodrive.png", "true"),
   App("emulators", "PocketSNES", "SNES Emulator", f"{core_path}pocketsnes_libretro.so", ".smc,.zip", 'pocketsnes.png', "true"),
   App("emulators", "QuickNES", "NES Emulator",  f"{core_path}quicknes_libretro.so", ".nes,.zip", 'fceux.png', "true"),
@@ -31,8 +31,6 @@ apps = [
 
 buildroot_root = sys.argv[1]
 
-print(buildroot_root)
-print("rutabega")
 
 for a in apps:
     destpath = os.path.join(buildroot_root, f"configs/.gmenunx/sections/{a.section}")
