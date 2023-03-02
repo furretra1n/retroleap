@@ -4,9 +4,15 @@ CONFIG=/configs/retroarch.cfg.leapstergs
 
 # Really any file to indicate lf1000 will do. 
 # This will eventually need to be expanded to account for leappad1.
-# However, the config should be the same across Explorer and Didj.
+# The configs for didj and explorer are slightly different due to different button layouts + button count.
+
 if [[ -f /sys/bus/platform/drivers/lf1000-gpio/bind ]]; then
-    CONFIG=/configs/retroarch.cfg.lf1000
+	didj_board_id="3"
+	if [ "$didj_board_id" == "$(cat /sys/devices/platform/lf1000-gpio/board_id)" ] ;then
+		CONFIG=/configs/retroarch.cfg.didj
+	else
+		CONFIG=/configs/retroarch.cfg.leapsterexplorer
+	fi
 fi
 
 
