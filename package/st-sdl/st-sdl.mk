@@ -13,11 +13,12 @@ ST_SDL_DEPENDENCIES = sdl sdl_image sdl_ttf
 ST_SDL_INSTALL_STAGING = NO
 
 define ST_SDL_BUILD_CMDS
-	CROSS_COMPILE="$(TARGET_CROSS)" $(MAKE) -C $(@D) -f Makefile st
+	CROSS_COMPILE="$(TARGET_CROSS)" $(MAKE) -C $(@D) -f Makefile st libst-preload.so
 endef
 
 define ST_SDL_INSTALL_TARGET_CMDS
         $(INSTALL) -D $(@D)/st $(TARGET_DIR)/usr/bin/st	
+	$(INSTALL) -D $(@D)/libst-preload.so $(TARGET_DIR)/usr/lib/libst-preload.so
 endef
 
 $(eval $(generic-package))
