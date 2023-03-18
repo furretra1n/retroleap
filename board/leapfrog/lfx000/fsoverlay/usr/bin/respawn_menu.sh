@@ -30,6 +30,8 @@ fi
 echo 1596 > /proc/sys/vm/min_free_kbytes
 
 export HOME=/configs
+# TODO: Figure out why tslib can't detect this automatically as it'll probably be different for lf1000.
+export TSLIB_TSDEVICE=/dev/input/event1
 
 if [[ ! -f "/configs/.config/retroarch/retroarch.cfg" ]];
 then
