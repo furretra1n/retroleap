@@ -1,0 +1,114 @@
+diff --git a/esp_ctrl.c b/esp_ctrl.c
+index 6b051fe..555ef2d 100755
+--- a/esp_ctrl.c
++++ b/esp_ctrl.c
+@@ -622,14 +622,14 @@ int sip_send_setkey(struct esp_pub *epub, u8 bssid_no, u8 *peer_addr, struct iee
+         setkeycmd->hw_key_idx= key->hw_key_idx;
+ 
+         if (isvalid) {
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 37))
+                 setkeycmd->alg= key->alg;
+ #else
+                 setkeycmd->alg= esp_cipher2alg(key->cipher);
+ #endif /* NEW_KERNEL */
+                 setkeycmd->keyidx = key->keyidx;
+                 setkeycmd->keylen = key->keylen;
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 37))
+                 if (key->alg == ALG_TKIP) {
+ #else
+                 if (key->cipher == WLAN_CIPHER_SUITE_TKIP) {
+diff --git a/esp_mac80211.c b/esp_mac80211.c
+index b5dca6e..26c75e5 100755
+--- a/esp_mac80211.c
++++ b/esp_mac80211.c
+@@ -1279,7 +1279,7 @@ static void esp_op_sta_notify(struct ieee80211_hw *hw, struct ieee80211_vif *vif
+         ESP_IEEE80211_DBG(ESP_DBG_TRACE, "%s enter \n", __func__);
+ 
+         switch (cmd) {
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 37))
+         case STA_NOTIFY_ADD:
+             ESP_IEEE80211_DBG(ESP_DBG_ERROR, "%s cmd add\n", __func__);
+ #if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 28))
+diff --git a/esp_sip.c b/esp_sip.c
+index 632db86..b5f645b 100755
+--- a/esp_sip.c
++++ b/esp_sip.c
+@@ -949,7 +949,7 @@ static int sip_pack_pkt(struct esp_sip *sip, struct sk_buff *skb, int *pm_state)
+ 
+                 /* make room for encrypted pkt */
+                 if (itx_info->control.hw_key) {
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 37))
+                         shdr->d_enc_flag= itx_info->control.hw_key->alg+1;
+ #else
+                         int alg = esp_cipher2alg(itx_info->control.hw_key->cipher);
+@@ -1224,7 +1224,7 @@ static void sip_tx_status_report(struct esp_sip *sip, struct sk_buff *skb, struc
+ 
+         } else {
+                 tx_info->flags |= IEEE80211_TX_STAT_AMPDU | IEEE80211_TX_STAT_ACK;
+-#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 39))
++#if (LINUX_VERSION_CODE < KERNEL_VERSION(2, 6, 37))
+                 tx_info->status.ampdu_ack_map = 1;
+ #else
+                 tx_info->status.ampdu_len = 1;
+diff --git a/esp_utils.c b/esp_utils.c
+index 59d829b..0070fe0 100755
+--- a/esp_utils.c
++++ b/esp_utils.c
+@@ -118,7 +118,7 @@ bool esp_wmac_rxsec_error(u8 error)
+         return (error >= RX_SECOV_ERR && error <= RX_SECFIFO_TIMEOUT) || (error >= RX_WEPICV_ERR && error <= RX_WAPIMIC_ERR);
+ }
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37))
+ int esp_cipher2alg(int cipher)
+ {
+         if (cipher == WLAN_CIPHER_SUITE_TKIP)
+diff --git a/esp_utils.h b/esp_utils.h
+index 8d214cc..c6f72eb 100755
+--- a/esp_utils.h
++++ b/esp_utils.h
+@@ -24,7 +24,7 @@
+ 
+ u32 esp_ieee2mhz(u8 chan);
+ 
+-#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 39))
++#if (LINUX_VERSION_CODE >= KERNEL_VERSION(2, 6, 37))
+ enum ieee80211_key_alg {
+         ALG_WEP,
+         ALG_TKIP,
+diff --git a/sdio_stub.c b/sdio_stub.c
+index 8c28a36..378c219 100755
+--- a/sdio_stub.c
++++ b/sdio_stub.c
+@@ -9,6 +9,10 @@
+ #include <linux/module.h>
+ #include <linux/moduleparam.h>
+ //#include <mach/iomux.h>
++#include <mach/gpio.h>
++#include <mach/gpio_map.h>
++
++
+ 
+ /* reset GPIO parameter defaults to GPIO 0 (ID_SD) on the Raspberry Pi */
+ static int esp_reset_gpio = 0;
+@@ -38,8 +42,16 @@ void sif_platform_reset_target(void)
+ 	printk("ESP8089 reset via GPIO %d\n", esp_reset_gpio);
+ 	gpio_request(esp_reset_gpio,"esp_reset");
+ 	gpio_direction_output(esp_reset_gpio,0);
++	gpio_configure_pin(
++		lf1000_l2p_port(DIDJ_CARTRIDGE_DETECT_PORT),
++		lf1000_l2p_pin(DIDJ_CARTRIDGE_DETECT_PIN),
++		GPIO_GPIOFN, 1, 0, 0);
+ 	msleep(200);
+ 	gpio_direction_input(esp_reset_gpio);
++	gpio_configure_pin(
++		lf1000_l2p_port(DIDJ_CARTRIDGE_DETECT_PORT),
++		lf1000_l2p_pin(DIDJ_CARTRIDGE_DETECT_PIN),
++		GPIO_GPIOFN, 0, 1, 0);
+ 	gpio_free(esp_reset_gpio);
+ }
+ 
