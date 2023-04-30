@@ -19,11 +19,15 @@ fi
 valencia=$(fbset | grep 480x272)
 if [[ $? == 0 ]]; then
     CONFIG=/configs/retroarch.cfg.leappad2
+	#HACK: No gmenunx support on the leappads yet (not enough buttons!)
+	touch /flags/boot_to_retroarch
 fi
 
 rio=$(fbset | grep 1024x600)
 if [[ $? == 0 ]]; then
+	#HACK: No gmenunx support on the leappads yet (not enough buttons!)
     CONFIG=/configs/retroarch.cfg.leappadultra
+	touch /flags/boot_to_retroarch
 fi
 
 # Set minimum free memory (mainly for Didj - fixes crashes in gpsp)
