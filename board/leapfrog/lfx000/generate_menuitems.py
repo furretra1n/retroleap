@@ -29,7 +29,13 @@ apps = [
   App("games", "snes9x4d", "SNES emulator (standalone)", f"{bin_path}snes9x4d", ".smc,.zip", "pocketsnes.png", True),
 
   # Applications (terminal, etc)
-  App("applications", "st-sdl", "Terminal Emulator", f"{bin_path}st", "", "terminal.png", False)
+  App("applications", "st-sdl", "Terminal Emulator", f"{bin_path}st", "", "terminal.png", False),
+  # TODO: Add a section for "system" or something similar.
+  # TODO: Figure out how to get tslib to not need the hardcoded input path, or set it as a global elsewhere.
+  App("applications", "ts_calibrate", "Calibrate Touchscreen", f"{bin_path}ts_calibrate", "", "glutexto.png", False),
+  App("applications", "ts_test", "Test Touchscreen", f"{bin_path}ts_test", "", "tv.png", False)
+
+
 ]
 
 buildroot_root = sys.argv[1]
