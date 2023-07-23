@@ -17,7 +17,7 @@ jobs:
       run: ./do_release.sh && tar -cf archive.tar output/*
 
     - name: Run check
-      uses: actions/upload-artifacts@v3
+      uses: actions/upload-artifact@v3
       with:
        name: archive
        path: archive.tar
