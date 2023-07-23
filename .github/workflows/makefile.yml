@@ -12,9 +12,9 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/upload-artifact@v3
     - name: Install dependencies
       run: make lf2000_defconfig   
+    - uses: actions/upload-artifact@v3
     - name: my-artifact
     - with:
        path: output/
