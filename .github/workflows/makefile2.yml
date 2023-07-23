@@ -13,7 +13,9 @@ jobs:
 
     steps:
     - name: Actually install deps
-      run: sudo apt install xgettext 
+      run: | 
+	sudo apt update
+	sudo apt install gettext 
     - uses: actions/checkout@v3
     - name: Install dependencies
       run: ./do_release.sh && tar -cf archive.tar output/*
