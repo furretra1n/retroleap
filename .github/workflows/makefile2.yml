@@ -14,7 +14,7 @@ jobs:
     steps:
     - uses: actions/checkout@v3
     - name: Install dependencies
-      run: ./do_release.sh && tar -cf archive.tar output/*
+      run: sudo apt install xgettext && ./do_release.sh && tar -cf archive.tar output/*
 
     - name: Run check
       uses: actions/upload-artifact@v3
