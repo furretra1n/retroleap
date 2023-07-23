@@ -13,12 +13,9 @@ jobs:
 
     steps:
     - uses: actions/checkout@v3
-
-
     - name: Install dependencies
       run: ./do_release.sh
-
-    - name: Run check
     - uses: actions/upload-artifacts@v3
+    - name: Run check
     - with:
        path: output/
