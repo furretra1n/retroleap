@@ -12,9 +12,11 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Actually install deps
+      run: sudo apt install xgettext 
     - uses: actions/checkout@v3
     - name: Install dependencies
-      run: sudo apt install xgettext && ./do_release.sh && tar -cf archive.tar output/*
+      run: ./do_release.sh && tar -cf archive.tar output/*
 
     - name: Run check
       uses: actions/upload-artifact@v3
