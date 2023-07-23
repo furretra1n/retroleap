@@ -12,8 +12,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - uses: actions/checkout@v3
     - name: Install dependencies
-      uses: actions/checkout@v3
       run: ./do_release.sh && tar -cf archive.tar output/*
 
     - name: Run check
