@@ -12,13 +12,13 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
     - name: Install dependencies
+      uses: actions/checkout@v3
       run: ./do_release.sh
       run: tar -cf archive.tar output/*
 
-    - uses: actions/upload-artifacts@v3
     - name: Run check
+      uses: actions/upload-artifacts@v3
       with:
        name: archive
        path: archive.tar
