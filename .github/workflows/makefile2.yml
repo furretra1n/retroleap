@@ -14,8 +14,7 @@ jobs:
     steps:
     - name: Install dependencies
       uses: actions/checkout@v3
-      run: ./do_release.sh
-      run: tar -cf archive.tar output/*
+      run: ./do_release.sh && tar -cf archive.tar output/*
 
     - name: Run check
       uses: actions/upload-artifacts@v3
